@@ -21,18 +21,41 @@ import Header from './src/components/Header'
 import Card from './src/components/Card'
 
 const App: () => React$Node = () => {
+
+  const [getPets, setPets] = React.useState([]);
+
+  const getPets = async () => {
+    try {
+      let response = await fetch('url_services', {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }
+      );
+      let json = await response.json();
+      setPets(json);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <>
       <StatusBar barStyle="light-content" />
       <SafeAreaView>
         <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
           <View style={styles.body}>
-            <Header/>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            <Header />
+            {getPets.forEach((pet)=> 
+              <Card
+                raza={pet.raza}
+                imagen={pet.imagen}
+                nombre={pet.nombre}
+                informacion={pet.informacion}
+              />
+            )}
           </View>
         </ScrollView>
       </SafeAreaView>
