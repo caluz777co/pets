@@ -17,7 +17,7 @@ const Card = (props) => {
             <View style={[s.row]}>
               <View style={[s.col4, s.p1]}>
                 <Image
-                  source={{uri: props.imagen})}
+                  source={{uri: props.imagen}}
                   style={{ width: 100, height: 100}}
                 />
               </View>

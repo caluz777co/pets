@@ -52,7 +52,7 @@ const App: () => React$Node = () => {
         <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
           <View style={styles.body}>
             <Header />
-            {listPets.forEach((pet)=> 
+            {listPets.map((pet)=> 
               <Card
                 raza={pet.raza}
                 imagen={pet.imagen}
