@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -22,7 +22,7 @@ import Card from './src/components/Card'
 
 const App: () => React$Node = () => {
 
-  const [getPets, setPets] = React.useState([]);
+  const [listPets, setPets] = React.useState([]);
 
   const getPets = async () => {
     try {
@@ -41,6 +41,10 @@ const App: () => React$Node = () => {
     }
   }
 
+  useEffect(()=>{
+    getPets();
+  },[])
+
   return (
     <>
       <StatusBar barStyle="light-content" />
@@ -48,7 +52,7 @@ const App: () => React$Node = () => {
         <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
           <View style={styles.body}>
             <Header />
-            {getPets.forEach((pet)=> 
+            {listPets.forEach((pet)=> 
               <Card
                 raza={pet.raza}
                 imagen={pet.imagen}
