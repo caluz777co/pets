@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, Linking } from 'react-native';
 import BootstrapStyleSheet from 'react-native-bootstrap-styles';
 
 const bootstrapStyleSheet = new BootstrapStyleSheet();
@@ -17,8 +17,8 @@ const Card = (props) => {
             <View style={[s.row]}>
               <View style={[s.col4, s.p1]}>
                 <Image
-                  source={{uri: props.imagen}}
-                  style={{ width: 100, height: 100}}
+                  source={{ uri: props.imagen }}
+                  style={{ width: 100, height: 100 }}
                 />
               </View>
               <View style={[s.col8]}>
@@ -26,7 +26,10 @@ const Card = (props) => {
                   <Text>{props.nombre}</Text>
                 </View>
                 <View style={[s.border]}>
-                  <Text>{props.informacion}</Text>
+                  <Text style={{ color: 'blue' }}
+                    onPress={() => Linking.openURL(props.informacion)}>
+                    Mas Información
+                  </Text>
                 </View>
               </View>
             </View>

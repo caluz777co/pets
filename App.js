@@ -32,8 +32,7 @@ const App: () => React$Node = () => {
           Accept: 'application/json',
           'Content-Type': 'application/json'
         }
-      }
-      );
+      });
       let json = await response.json();
       setPets(json);
     } catch (error) {
@@ -52,8 +51,9 @@ const App: () => React$Node = () => {
         <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
           <View style={styles.body}>
             <Header />
-            {listPets.map((pet)=> 
+            {listPets.map((pet,index)=> 
               <Card
+                key={index}
                 raza={pet.raza}
                 imagen={pet.imagen}
                 nombre={pet.nombre}
